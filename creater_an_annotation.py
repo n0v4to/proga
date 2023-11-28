@@ -2,6 +2,9 @@ import os
 import csv
 
 def create_annotation():
+    '''
+    Создает аннотацию
+    '''
     dataset_path = os.path.abspath("dataset")
 
     with open('annotations.csv', 'w') as file:
