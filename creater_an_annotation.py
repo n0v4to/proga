@@ -14,8 +14,7 @@ def create_annotation():
                 abs_path = os.path.abspath(os.path.join(root, filename))
                 rel_path = os.path.relpath(abs_path)
                 class_name = os.path.basename(os.path.dirname(abs_path))
-                if class_name in ["polar bear", "brown bear"]:
-                    writer.writerow([abs_path, rel_path, class_name])
+                writer.writerow([abs_path, rel_path, class_name])
     
 def main():
     create_annotation()
