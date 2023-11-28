@@ -14,7 +14,7 @@ class Iterator:
     
     def __next__(self):
         if self.counter < self.limit:
-            next_path = os.path.join(self.name_of_dataset,self.class_name, self.data[self.counter])
+            next_path = os.path.join(self.name_of_dataset, self.class_name, self.data[self.counter])
             self.counter += 1
             return next_path
         else:
