@@ -3,7 +3,7 @@ import csv
 
 def create_annotation():
     '''
-    Создает аннотацию
+    Создает аннотацию для dataset
     '''
     dataset_path = os.path.abspath("dataset")
 
