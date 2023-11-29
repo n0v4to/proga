@@ -4,6 +4,24 @@ import csv
 import random
 import re
 
+def get_new_path(class_name, dataset2_path):
+    '''
+    Получение пути random_dataset
+    Parameters
+    class_name : str
+      Имя класса
+    dataset2_path : str
+      Путь до dataset2
+    Returns
+    new_path : str
+        Новый сформированный путь random_dataset
+    '''
+    random_filename = f"{random.randint(0, 10000)}.jpg"
+    new_filename = f"{class_name}_{random_filename}"
+    new_filename = re.sub("\D{5}_\D{4}_", '', new_filename)
+    new_path = os.path.join(dataset2_path, new_filename)
+    return new_path
+
 def create_random_dataset_and_annotations():
     '''
     Копирует набор данных
@@ -24,17 +42,18 @@ def create_random_dataset_and_annotations():
             for filename in files:
                 class_name = os.path.basename(root)
                 class_name = class_name.replace(" ", "_")
-                rand_num = random.randint(0, 10000)
-                random_filename = f"{rand_num}.jpg"
-                new_filename = f"{class_name}_{random_filename}"
                 original_path = os.path.join(root, filename)
-                new_filename = re.sub("\D{5}_\D{4}_", '', new_filename)
-                new_path = os.path.join(dataset2_path, new_filename)
+                # random_filename = f"{random.randint(0, 10000)}.jpg"
+                # new_filename = f"{class_name}_{random_filename}"
+                # new_filename = re.sub("\D{5}_\D{4}_", '', new_filename)
+                # new_path = os.path.join(dataset2_path, new_filename)
+                new_path = get_new_path(class_name, dataset2_path)
                 while os.path.exists(new_path):
-                    random_filename = f"{random.randint(0, 10000)}.jpg"
-                    new_filename = f"{class_name}_{random_filename}"
-                    new_filename = re.sub("\D{5}_\D{4}_", '', new_filename)
-                    new_path = os.path.join(dataset2_path, new_filename)
+                    # random_filename = f"{random.randint(0, 10000)}.jpg"
+                    # new_filename = f"{class_name}_{random_filename}"
+                    # new_filename = re.sub("\D{5}_\D{4}_", '', new_filename)
+                    # new_path = os.path.join(dataset2_path, new_filename)
+                    new_path = get_new_path(class_name, dataset2_path)
 
                 shutil.copy(original_path, new_path)
 
