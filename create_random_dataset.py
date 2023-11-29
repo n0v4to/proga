@@ -30,6 +30,12 @@ def create_random_dataset_and_annotations():
                 original_path = os.path.join(root, filename)
                 new_filename = re.sub("\D{5}_\D{4}_", '', new_filename)
                 new_path = os.path.join(dataset2_path, new_filename)
+                while os.path.exists(new_path):
+                    random_filename = f"{random.randint(0, 10000)}.jpg"
+                    new_filename = f"{class_name}_{random_filename}"
+                    new_filename = re.sub("\D{5}_\D{4}_", '', new_filename)
+                    new_path = os.path.join(dataset2_path, new_filename)
+
                 shutil.copy(original_path, new_path)
 
                 rel_path = os.path.relpath(new_path)
