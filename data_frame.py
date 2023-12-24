@@ -93,7 +93,7 @@ def build_histogram(df: pd.DataFrame, class_label: int):
 
 def plot_histogram(df: pd.DataFrame, class_label: int):
     '''
-    Отрисовывает гистограмму
+    Строит гистограмму
     Parameters
         df : pd.DataFrame
         датафрейм
@@ -101,26 +101,14 @@ def plot_histogram(df: pd.DataFrame, class_label: int):
         Метка класса
     '''
     hist = build_histogram(df, class_label)
-    plt.figure(figsize=(12, 6))
-
-    plt.subplot(131)
-    plt.plot(hist[0], color='b')
-    plt.title('Blue Channel')
+    plt.figure(figsize=(10, 5))
+    plt.plot(hist[0], color='b', label='Blue Channel')
+    plt.plot(hist[1], color='g', label='Green Channel')
+    plt.plot(hist[2], color='r', label='Red Channel')
+    plt.title('Color Histogram')
     plt.xlabel('Pixel Value')
     plt.ylabel('Frequency')
-
-    plt.subplot(132)
-    plt.plot(hist[1], color='g')
-    plt.title('Green Channel')
-    plt.xlabel('Pixel Value')
-    plt.ylabel('Frequency')
-
-    plt.subplot(133)
-    plt.plot(hist[2], color='r')
-    plt.title('Red Channel')
-    plt.xlabel('Pixel Value')
-    plt.ylabel('Frequency')
-
+    plt.legend()
     plt.show()
 
 
